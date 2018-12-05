@@ -3,7 +3,7 @@ This module lets you practice DEBUGGING when RUN-TIME EXCEPTIONS occur.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
+         their colleagues, and Shixin Yan.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -175,7 +175,7 @@ def broken_1(circle, window):
       :type window: rg.RoseWindow
     """
     circle.attach_to(window)
-    circle2 = rg.Circle(circle.radius * 2)
+    circle2 = rg.Circle(circle.center, circle.radius * 2)
     circle2.attach_to(window)
     window.render()
 
@@ -199,7 +199,7 @@ def broken_2(x, y, window):
       :type y:      int
       :type window: rg.RoseWindow
       """
-    circle = rg.Circle((x, y), 33)
+    circle = rg.Circle(rg.Point(x, y), 33)
     circle.attach_to(window)
     window.render()
 
@@ -232,15 +232,15 @@ def broken_3(n, point, length, distance_between_lines, window):
       :type distance_between_lines: int
       :type window:                 rg.RoseWindow
     """
-    a = rg.Point(point.x, point.y)
-    b = rg.Point(point.x, point.y + length)
 
-    for _ in range(n):
+    for k in range(n):
+        ax = point.x + distance_between_lines*k
+        bx = point.x + distance_between_lines*k
+        a = rg.Point(ax, point.y)
+        b = rg.Point(bx, point.y + length)
         line = rg.Line(a, b)
         line.attach_to(window)
         window.render(0.5)
-        b = b + distance_between_lines
-
 
 # -----------------------------------------------------------------------------
 # TODO: 6. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
@@ -262,7 +262,7 @@ def broken_4(x, y, radius, window):
       :type radius: int
       :type window: rg.RoseWindow
       """
-    circle = rg.Circle(rg.Point(x, y), 'radius')
+    circle = rg.Circle(rg.Point(x, y), radius)
     circle.fill_color = 'green'
     circle.attach_to(window)
     window.render()
@@ -287,7 +287,7 @@ def broken_5(circle, window):
       :type window: rg.RoseWindow
     """
     circle.attach_to(window)
-    square = rg.Square(circle.center)
+    square = rg.Square(circle.center, 2*circle.radius)
     square.outline_color = circle.fill_color
     square.attach_to(window)
     window.render()
@@ -305,8 +305,8 @@ def broken_6(n):
     Side effects:   None.
     """
     total = 0
-    for k in range(n + 1):
-        total = total + 1 / k
+    for k in range(n):
+        total = total + 1 / (k+1)
 
     return total
 
@@ -347,8 +347,6 @@ def broken_7(n, point, length, distance_between_lines, window):
         window.render(0.5)
         left = rg.Point(left.x, left.y + distance_between_lines)
         right = rg.Point(right.x, right.y + distance_between_lines)
-    window.close_on_mouse_click()
-
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
