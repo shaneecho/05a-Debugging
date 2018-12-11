@@ -167,7 +167,7 @@ def broken_1(circle, window):
         then draws another rg.Circle whose RADIUS
         is TWICE that of the given rg.Circle
         and whose center is the same as that of the given rg.Circle.
-        
+
       Must  ** render **     but   ** NOT close **   the window.
 
     Type hints:
@@ -191,9 +191,9 @@ def broken_2(x, y, window):
     Side effects:
       Draws a rg.Circle with radius 33, centered at (x, y),
         on the given rg.RoseWindow.
-      
+
       Must  ** render **     but   ** NOT close **   the window.
-          
+
     Type hints:
       :type x:      int
       :type y:      int
@@ -253,9 +253,9 @@ def broken_4(x, y, radius, window):
     Side effects:
       Draws a green-filled rg.Circle with the given radius,
         centered at (x, y), on the given rg.RoseWindow
-      
+
       Must  ** render **     but   ** NOT close **   the window.
-          
+
     Type hints:
       :type x:      int
       :type y:      int
@@ -278,8 +278,8 @@ def broken_5(circle, window):
     What goes out:  Nothing (i.e., None).
     Side effects:
       Draws the given rg.Circle and an rg.Square that circumscribes it,
-         both on the given rg.RoseWindow. 
-      
+         both on the given rg.RoseWindow.
+
       Must  ** render **     but   ** NOT close **   the window.
 
     Type hints:
@@ -352,3 +352,4 @@ def broken_7(n, point, length, distance_between_lines, window):
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
 main()
+
